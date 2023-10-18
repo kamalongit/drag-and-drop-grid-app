@@ -1,0 +1,87 @@
+<div class="container">
+ 
+<div class="row">
+    <div class="col-lg">
+
+    <mat-grid-list  cols="4" rowHeight="100px" cdkDropList [cdkDropListData]="todo" 
+#todoList="cdkDropList"
+[cdkDropListConnectedTo]="[doneList]" (cdkDropListDropped)="drop($event)">
+    
+    <mat-grid-tile
+      *ngFor="let cell of todo"
+      style="border-color: red; border-width: 1px;border-style: solid;"
+      cdkDrag
+      
+    >
+      {{ cell }}
+    </mat-grid-tile>
+
+  </mat-grid-list>
+  </div>
+</div>
+
+  <div class="row">
+    <div class="col-lg">
+
+    <mat-grid-list cols="4" rowHeight="100px" cdkDropList
+  #doneList="cdkDropList"
+  [cdkDropListData]="done"
+  [cdkDropListConnectedTo]="[todoList]" (cdkDropListDropped)="drop($event)">
+    
+    <mat-grid-tile
+      *ngFor="let cell of done"
+      style="border-color: blue; border-width: 1px;border-style: solid;"
+      cdkDrag
+      
+    >
+      {{ cell }}
+    </mat-grid-tile>
+
+  </mat-grid-list>
+  </div>
+  </div>
+</div>
+
+<!-- <div class="container">
+ 
+    <div class="row">
+        <div class="col-md" style="display: inline;">
+    
+            <div  cdkDropList [cdkDropListData]="todo" style="display: inline;"
+        #todoList="cdkDropList"
+        [cdkDropListConnectedTo]="[doneList]" (cdkDropListDropped)="drop($event)">
+            
+            <div
+            *ngFor="let cell of todo"
+            style="border-color: red; border-width: 1px;border-style: solid; display: inline;"
+            cdkDrag
+            
+            >
+            {{ cell }}
+            </div>
+    
+        </div>
+        <div class="col-4" style="display: inline;">
+            hello
+        </div>
+        <div class="col-md" style="display: inline;">
+    
+            <div cdkDropList style="display: inline;"
+          #doneList="cdkDropList"
+          [cdkDropListData]="done"
+          [cdkDropListConnectedTo]="[todoList]" (cdkDropListDropped)="drop($event)">
+            
+            <div
+              *ngFor="let cell of done"
+              style="border-color: blue; border-width: 1px;border-style: solid;display: inline;"
+              cdkDrag
+              
+            >
+              {{ cell }}
+            </div>
+        
+        </div>
+          
+    </div>
+
+</div> -->
